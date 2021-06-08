@@ -1,4 +1,3 @@
-import unittest
 import typewise_alert
 
 class TypewiseTest(unittest.TestCase):
