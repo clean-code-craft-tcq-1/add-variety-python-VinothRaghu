@@ -3,8 +3,9 @@ import typewise_alert
 
 
 class TypewiseTest(unittest.TestCase):
-  def test_infers_breach_as_per_limits(self):
-    self.assertTrue(typewise_alert.infer_breach(20, 50, 100) == 'TOO_LOW')
+  def test_check_and_alert(self):
+    self.assertTrue(typewise_alert.check_and_alert('console',{'coolingType':'PASSIVE_COOLING'},70)== True)
+    self.assertTrue(typewise_alert.check_and_alert('email',{'coolingType':'PASSIVE_COOLING'},70)== True)
 
 
 if __name__ == '__main__':
