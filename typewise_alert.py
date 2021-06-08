@@ -37,7 +37,7 @@ def send_to_console(breachType):
   return True
 
 def send_to_email(breachType):
-   print(f"Hello: {breachType_email[breachType]['recepient']}\n Breach is: {breachType}")
+   print(f"Hello: {breachType_email[breachType]['recepient']}\n Breach is: {threshold_limit_msgs[breachType]}")
    return True
 
 
