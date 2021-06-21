@@ -11,27 +11,50 @@ def infer_breach(value, lowerLimit, upperLimit):
     return 'TOO_HIGH'
   return 'NORMAL'
 
+email_recepient = {
+        'TOO_LOW': {'recepient': "low.b@c.com"},
+        'TOO_HIGH': {'recepient': "High.b@c.com"}}
+
 
 def classify_temperature_breach(coolingType, temperatureInC):
-  lowerLimit = cooling_types[coolingType]['lowerLimit']
-  upperLimit = cooling_types[coolingType]['upperLimit']
-  return infer_breach(temperatureInC, lowerLimit, upperLimit)
+  if validate_input(coolingType, temperatureInC): 
+    lowerLimit = cooling_types[coolingType]['lowerLimit']
+    upperLimit = cooling_types[coolingType]['upperLimit']
+    return infer_breach(temperatureInC, lowerLimit, upperLimit)
+  else:
+    raise ValueError('wrong input data')
+    
+def validate_input(coolingType1,coolingType1):
+    validate_coolingsize(coolingType1,temperatureInC1)
+    validate_bms_parameter(coolingType1,temperatureInC1)
+    
+def validate_coolingsize(coolingType2,temperatureInC2):   
+        if len(coolingType2)== 0: 
+            raise ValueError('coolent type is missing')
+        elif len(temperatureInC2) == 0:
+            raise ValueError('temperature input is missing')
+        
+
+    
+def validate_bms_parameter(coolingType3,temperatureInC3):
+        for item in coolingType3:
+            if not item.upper() in cooling_types.keys()
+                raise KeyError('Given coolent type is invalid')
+             
 
 def send_to_controller(breachType):
   header = 0xfeed
   print(f'{header}, {breachType}')                             
-  return f'{header}, {breachType}'
+  return True
 
 def send_to_console(breachType):
   header = 0xfeed
   print(f'{header}, {breachType}')                             
-  return f'{header}, {breachType}'
+  return True
 
 def send_to_email(breachType):
-  recepient = "a.b@c.com"
-  print(f'To: {recepient}')
-  print(alert_messages_for_breach_code[breachType]) 
-  return alert_messages_for_breach_code[breachType]                               
+   print(f"Hello: {email_recepient[breachType]['recepient']}\n Breach is: {breachType}")
+   return True                             
 
 alert_target_function_mapping = { "TO_CONTROLLER": send_to_controller, "TO_EMAIL" : send_to_email, "TO_CONSOLE" : send_to_console }
 
