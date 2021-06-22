@@ -1,7 +1,3 @@
-Created on Tue Jun 22 02:35:43 2021
-
-@author: VNO1COB
-"""
 import unittest
 import typewise_alert
 
